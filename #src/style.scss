@@ -1,0 +1,233 @@
+@import "./reset.scss";
+$color-white: #ffffff;
+$color-black: #111729;
+$color-light-black: #223344;
+$color-gray: #909193;
+$color-light-gray: #e5e7eb;
+$color-blue: #2a4dd0;
+$bg-color: #f2f9fe;
+$text-styles: (
+  heading: (
+    font-size: 3.75rem,
+    font-weight: 700,
+    color: $color-light-black,
+  ),
+  body: (
+    font-size: 1.125rem,
+    font-weight: 500,
+    color: $color-gray,
+  ),
+  button-text: (
+    font-size: 1rem,
+    font-weight: 500,
+    color: $color-white,
+  ),
+  small-text: (
+    font-size: 0.875rem,
+    font-weight: 400,
+    color: $color-gray,
+  ),
+);
+@mixin text-format($type) {
+  font-size: map-get(map-get($text-styles, $type), font-size);
+  font-weight: map-get(map-get($text-styles, $type), font-weight);
+  color: map-get(map-get($text-styles, $type), color);
+}
+.wrapper {
+  min-height: 100vh;
+  min-width: 100%;
+  background-color: $bg-color;
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  padding: 0 4rem;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.75rem 0 5.75rem 0;
+}
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+}
+.nav-box {
+
+}
+.nav-list {
+  display: flex;
+  gap: 2.5rem;
+  &__item {
+    @include text-format(small-text);
+    color: $color-light-black;
+    font-weight: 600;
+  }
+  &__item--active {
+    color: $color-blue;
+    &::after {
+      content: "";
+      display: block;
+      border: 1px solid $color-blue;
+    }
+  }
+}
+.hamburger-menu {
+  display: none;
+}
+//////
+.theme-slider {
+  position: relative;
+  background-color: $color-light-black;
+  border-radius: 1rem;
+  padding: 0.125rem;
+  max-height: min-content;
+  max-width: fit-content;
+  .icons {
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    &__item {
+      max-height: 1.125rem;
+      margin-right: 4px;
+      transition: 300ms;
+      &:last-child {
+        margin: 0;
+      }
+    }
+    &__item--active {
+      background-color: $color-white;
+      border-radius: 50%;
+      transition: 300ms;
+    }
+  }
+}
+//////
+.hero-section {
+  display: flex;
+  align-items: center;
+}
+.hero-description {
+  max-width: 50%;
+  span {
+    @include text-format(body);
+    display: block;
+    font-weight: 600;
+    color: $color-light-black;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+}
+.title {
+  @include text-format(heading);
+  margin-bottom: 2rem;
+  max-width: 60%;
+}
+.subtitle {
+  @include text-format(body);
+  margin-bottom: 1.375rem;
+  max-width: 85%;
+}
+.button-row {
+  @include text-format(button-text);
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  &__item {
+    padding: 1rem 2rem;
+    font-weight: 500;
+  }
+}
+.start-btn {
+  background-color: $color-blue;
+  border-radius: 1rem;
+}
+.demo-btn {
+  color: $color-blue;
+  padding: 0;
+  &::after {
+    content: "";
+    display: block;
+    border: 1px solid $color-blue;
+  }
+}
+.advantages-list {
+  display: flex;
+  gap: 1.25rem;
+  &__item {
+    span {
+      @include text-format(small-text);
+      display: inline;
+      margin-left: 0.5rem;
+    }
+  }
+}
+.hero-img-box {
+  max-width: 100%;
+  max-height: 100%;
+}
+@media (min-width: 890px) and (max-width: 1280px) {
+  .hero-description {
+    max-width: 55%;
+  }
+  .title {
+    max-width: 80%;
+  }
+  .subtitle {
+    max-width: 95%;
+  }
+}
+@media (min-width: 640px) and (max-width: 890px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .hero-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .hero-description {
+    order: 2;
+    max-width: 100%;
+  }
+  .title {
+    max-width: 100%;
+  }
+  .subtitle {
+    max-width: 95%;
+  }
+  .nav-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    transition: top 0.5s ease 0s;
+      &__active {
+        display: block;
+        top: 0;
+      }
+    } 
+  .nav-list {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+  }
+  .hamburger-menu {
+    display: block;
+    // position: relative;
+    cursor: pointer;
+    z-index: 15;
+  }
+  .theme-slider {
+    .icons {
+      &__item {
+        &:last-child {
+        }
+      }
+      &__item--active {
+      }
+    }
+  }
+}
