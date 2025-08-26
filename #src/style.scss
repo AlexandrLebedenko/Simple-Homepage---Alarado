@@ -108,7 +108,7 @@ $text-styles: (
 .hero-description {
   max-width: 50%;
   span {
-    @include text-format(body);
+    @include text-format(small-text);
     display: block;
     font-weight: 600;
     color: $color-light-black;
