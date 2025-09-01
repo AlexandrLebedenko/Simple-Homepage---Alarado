@@ -235,12 +235,24 @@ $text-styles: (
   .theme-slider {
     // display: none;
     position: fixed;
-    top:  32.5rem;
+    top: 32.5rem;
     right: -30%;
     transition: right 0.5s ease 0s;
     &__active {
       display: block;
       right: 22%;
+    }
+  }
+}
+.dark-theme {
+  background-color: $color-black;
+  * {
+    color: $color-white !important;
+    &::after {
+      border-color: $color-white;
+    }
+    .nav-box {
+      background-color: $color-black;
     }
   }
 }

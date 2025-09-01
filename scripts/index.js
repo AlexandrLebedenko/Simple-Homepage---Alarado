@@ -37,11 +37,13 @@ function themeContentChange() {
     moonIcon.src = "./img/Moon_fill.svg";
     sunIcon.src = "./img/Sun_fill_dark.svg";
     moonIcon.classList.add("icons__item--active");
+    wrapper.classList.add("dark-theme");
   } else {
     logoImg.src = "./img/logo-light.svg";
     moonIcon.src = "./img/Moon_fill_light.svg";
     sunIcon.src = "./img/Sun_fill.svg";
     sunIcon.classList.add("icons__item--active");
+    wrapper.classList.remove("dark-theme");
   }
 }
 // Theme slider action
